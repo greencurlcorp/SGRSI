@@ -3,7 +3,7 @@ main {
     justify-content: center;
     align-items: center;
     flex: 1;
-    background-color: rgb(179, 179, 179);
+    background-color: rgb(235, 235, 235);
 }
 
 form {
@@ -14,8 +14,8 @@ form {
     margin: auto;
     margin-top: 50px;
     border-radius: 8px;
-    box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.788);
-    background-color: white;
+    box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.788);
+    background-color: rgb(255, 255, 255);
 }
 
 h2 {
