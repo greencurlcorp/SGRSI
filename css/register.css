@@ -6,18 +6,6 @@ main {
     background-color: rgb(235, 235, 235);
 }
 
-form {
-    background-color: transparent;
-    max-width: 700px;
-    width: 90%;
-    font-family: sans-serif;
-    margin: auto;
-    padding-bottom: 20px 0;
-    border-radius: 8px;
-    box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.788);
-    background-color: rgb(255, 255, 255);
-}
-
 h2 {
     text-align: center;
     font-size: 16px;
@@ -32,6 +20,17 @@ h2 {
 
 }
 
+form {
+    background-color: transparent;
+    max-width: 700px;
+    width: 90%;
+    font-family: sans-serif;
+    margin: auto;
+    padding-bottom: 20px 0;
+    border-radius: 8px;
+    box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.788);
+    background-color: rgb(255, 255, 255);
+}
 
 
 .form_input {
@@ -62,7 +61,7 @@ input:hover {
 
 }
 
-.btn_login {
+.btn_volver {
     border-radius: 25px;
     width: 50%;
     height: 38px;
@@ -71,6 +70,11 @@ input:hover {
     border: 1px solid #666;
     transition: all 0.3s ease;
     box-shadow: 0px 0px 15px #0003;
+}
+
+.btn_volver:hover {
+    transform: translateY(-1px);
+    box-shadow: 0px 0px 10px #007bff;
 }
 
 .btn_register {
@@ -90,31 +94,27 @@ input:hover {
     box-shadow: 0px 0px 10px #007bff;
 }
 
-.forgot_password:hover {
-    color: #007bff;
-
-}
-
-.btn_login:hover {
-    transform: translateY(-1px);
-    box-shadow: 0px 0px 10px #007bff;
-}
-
 @media screen and (max-width: 579px) {
     form h2 {
         font-size: 16px;
         letter-spacing: 1px;
     }
 
-    .form_login {
+    .form_register {
         width: 80%;
     }
 
-    .btn_login:hover {
+    .btn_register:hover {
         box-shadow: none;
         transform: none;
         box-shadow: 0px 0px 5px #007bff;
 
+    }
+
+    .btn_volver:hover {
+        box-shadow: none;
+        transform: none;
+        box-shadow: 0px 0px 5px #007bff;
     }
 
     main {
