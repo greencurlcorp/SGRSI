@@ -1,0 +1,649 @@
+main {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex: 1;
+    padding: 28px 20px;
+    background-color: #eef2f7;
+    background-image:
+        radial-gradient(circle at 15% 25%, rgba(26, 86, 160, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 85% 75%, rgba(30, 58, 95, 0.07) 0%, transparent 50%);
+}
+
+.page_layout {
+    display: flex;
+    gap: 20px;
+    width: 100%;
+    max-width: 1200px;
+    align-items: flex-start;
+}
+
+.form_card {
+    flex: 1;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow:
+        0 4px 6px rgba(0, 0, 0, 0.05),
+        0 10px 40px rgba(30, 58, 95, 0.12);
+    overflow: hidden;
+}
+
+.form_card h2 {
+    text-align: center;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: white;
+    background: linear-gradient(90deg, #1a56a0 0%, #1e3a5f 100%);
+    padding: 18px 32px;
+    margin: 0;
+}
+
+.form_registro {
+    padding: 20px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.field_label {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    color: #1e3a5f;
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 9px 13px;
+    border: 1.5px solid #d1dae8;
+    border-radius: 8px;
+    color: #1e3a5f;
+    background-color: #f8fafc;
+    font-family: inherit;
+    font-size: 13px;
+    height: 40px;
+    outline: none;
+    box-sizing: border-box;
+    transition: border-color 0.2s, box-shadow 0.2s, background-color 0.2s;
+}
+
+input[type="text"]:hover,
+input[type="text"]:focus {
+    border-color: #1a56a0;
+    background-color: #fff;
+    box-shadow: 0 0 0 3px rgba(26, 86, 160, 0.1);
+}
+
+.form_input {
+    display: flex;
+    flex-direction: column;
+}
+
+.fila_superior {
+    display: flex;
+    align-items: flex-end;
+    gap: 12px;
+    flex-wrap: wrap;
+    background-color: #f0f4fa;
+    border: 1.5px solid #d1dae8;
+    border-radius: 10px;
+    padding: 12px 16px;
+}
+
+.bloque_tipo {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.tipo_label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #1e3a5f;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.tipo_label input[type="checkbox"] {
+    width: 15px;
+    height: 15px;
+    accent-color: #1a56a0;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.bloque_numeros {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.numeros_label {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #64748b;
+}
+
+.numeros_grupo {
+    display: flex;
+    gap: 6px;
+}
+
+.num_label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+}
+
+.num_label input[type="radio"] {
+    display: none;
+}
+
+.num_label span {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1.5px solid #d1dae8;
+    border-radius: 6px;
+    background-color: #fff;
+    font-size: 13px;
+    font-weight: 600;
+    color: #1e3a5f;
+    transition: all 0.2s;
+    cursor: pointer;
+}
+
+.num_label input[type="radio"]:checked + span {
+    background: linear-gradient(135deg, #1a56a0, #1e3a5f);
+    color: #fff;
+    border-color: #1a56a0;
+    box-shadow: 0 2px 8px rgba(26, 86, 160, 0.3);
+}
+
+.num_label:hover span {
+    border-color: #1a56a0;
+    background-color: #eef4ff;
+}
+
+.bloque_fecha {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.fecha_inputs {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.input_fecha {
+    width: 40px !important;
+    text-align: center;
+    padding: 0 4px !important;
+    font-size: 13px;
+}
+
+.input_anio {
+    width: 58px !important;
+}
+
+.fecha_sep {
+    color: #64748b;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.bloque_grupo {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.input_grupo {
+    width: 70px !important;
+    text-align: center;
+}
+
+.fila_horario {
+    display: flex;
+    align-items: flex-end;
+    gap: 16px;
+    flex-wrap: wrap;
+    background-color: #f0f4fa;
+    border: 1.5px solid #d1dae8;
+    border-radius: 10px;
+    padding: 12px 16px;
+}
+
+.bloque_horario {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.bloque_horario .field_label {
+    margin-bottom: 0;
+}
+
+.input_hora {
+    width: 75px !important;
+    text-align: center;
+}
+
+.hora_sep {
+    color: #64748b;
+    font-size: 16px;
+    font-weight: 300;
+}
+
+.bloque_turno {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.bloque_turno .field_label {
+    margin-bottom: 0;
+}
+
+.turno_grupo {
+    display: flex;
+    gap: 6px;
+}
+
+.turno_label {
+    cursor: pointer;
+}
+
+.turno_label input[type="radio"] {
+    display: none;
+}
+
+.turno_label span {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1.5px solid #d1dae8;
+    border-radius: 6px;
+    background-color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+    color: #1e3a5f;
+    transition: all 0.2s;
+    cursor: pointer;
+}
+
+.turno_label input[type="radio"]:checked + span {
+    background: linear-gradient(135deg, #1a56a0, #1e3a5f);
+    color: #fff;
+    border-color: #1a56a0;
+    box-shadow: 0 2px 8px rgba(26, 86, 160, 0.3);
+}
+
+.turno_label:hover span {
+    border-color: #1a56a0;
+    background-color: #eef4ff;
+}
+
+.seccion_incidencia {
+    border: 1.5px solid #d1dae8;
+    border-radius: 10px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    background-color: #f8fafc;
+}
+
+.incidencia_item {
+    border: 1.5px solid #d1dae8;
+    border-radius: 8px;
+    padding: 14px 14px 14px 14px;
+    background-color: #fff;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    position: relative;
+}
+
+.bloque_tipo_incidencia {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.bloque_descripcion {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+}
+
+.select_incidencia {
+    width: 100%;
+    padding: 9px 13px;
+    border: 1.5px solid #d1dae8;
+    border-radius: 8px;
+    color: #1e3a5f;
+    background-color: #fff;
+    font-family: inherit;
+    font-size: 13px;
+    height: 40px;
+    outline: none;
+    cursor: pointer;
+    box-sizing: border-box;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.select_incidencia:focus,
+.select_incidencia:hover {
+    border-color: #1a56a0;
+    box-shadow: 0 0 0 3px rgba(26, 86, 160, 0.1);
+}
+
+.textarea_descripcion {
+    width: 100%;
+    padding: 9px 13px;
+    border: 1.5px solid #d1dae8;
+    border-radius: 8px;
+    color: #1e3a5f;
+    background-color: #fff;
+    font-family: inherit;
+    font-size: 13px;
+    resize: vertical;
+    min-height: 70px;
+    outline: none;
+    box-sizing: border-box;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.textarea_descripcion:focus,
+.textarea_descripcion:hover {
+    border-color: #1a56a0;
+    box-shadow: 0 0 0 3px rgba(26, 86, 160, 0.1);
+}
+
+.btn_eliminar_incidencia {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    color: #94a3b8;
+    font-size: 15px;
+    cursor: pointer;
+    line-height: 1;
+    padding: 3px 6px;
+    border-radius: 4px;
+    transition: color 0.2s, background-color 0.2s;
+}
+
+.btn_eliminar_incidencia:hover {
+    color: #dc2626;
+    background-color: #fef2f2;
+}
+
+.btn_agregar_incidencia {
+    width: 100%;
+    padding: 12px;
+    background-color: transparent;
+    border: 1.5px dashed #1a56a0;
+    border-radius: 8px;
+    color: #1a56a0;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn_agregar_incidencia:hover {
+    background-color: #eef4ff;
+    border-style: solid;
+}
+
+.form_actions {
+    display: flex;
+    justify-content: center;
+    padding-top: 4px;
+}
+
+.btn_enviar {
+    width: 220px;
+    height: 42px;
+    border-radius: 8px;
+    border: none;
+    background: linear-gradient(90deg, #1a56a0, #1e3a5f);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    box-shadow: 0 2px 8px rgba(26, 86, 160, 0.3);
+}
+
+.btn_enviar:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 14px rgba(26, 86, 160, 0.4);
+}
+
+.btn_enviar:active {
+    transform: translateY(0);
+}
+
+.panel_historial {
+    width: 340px;
+    flex-shrink: 0;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow:
+        0 4px 6px rgba(0, 0, 0, 0.05),
+        0 10px 40px rgba(30, 58, 95, 0.12);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.historial_titulo {
+    text-align: center;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: white;
+    background: linear-gradient(90deg, #1a56a0 0%, #1e3a5f 100%);
+    padding: 16px;
+    margin: 0;
+}
+
+.historial_tabla_wrap {
+    padding: 12px;
+    overflow-y: auto;
+    max-height: 600px;
+}
+
+.historial_tabla {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 11px;
+}
+
+.historial_tabla thead th {
+    background-color: #f0f4fa;
+    color: #1e3a5f;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 7px 6px;
+    text-align: center;
+    border-bottom: 2px solid #d1dae8;
+    font-size: 10px;
+}
+
+.historial_tabla tbody td {
+    padding: 8px 6px;
+    text-align: center;
+    border-bottom: 1px solid #eef2f7;
+    color: #334155;
+    font-size: 12px;
+}
+
+.historial_tabla tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.historial_tabla tbody tr:hover td {
+    background-color: #f0f4fa;
+}
+
+.btn_eliminar_registro {
+    background: none;
+    border: none;
+    color: #94a3b8;
+    cursor: pointer;
+    font-size: 13px;
+    padding: 2px 4px;
+    border-radius: 4px;
+    transition: color 0.2s, background-color 0.2s;
+    line-height: 1;
+}
+
+.btn_eliminar_registro:hover {
+    color: #dc2626;
+    background-color: #fef2f2;
+}
+
+.historial_vacio {
+    text-align: center;
+    color: #94a3b8;
+    font-size: 12px;
+    padding: 16px 0;
+    margin: 0;
+    display: none;
+}
+
+.historial_vacio.visible {
+    display: block;
+}
+
+.btn_hamburguesa {
+    margin-left: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 6px 8px;
+    border-radius: 6px;
+    transition: background-color 0.2s;
+    flex-shrink: 0;
+}
+
+.btn_hamburguesa:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+.btn_hamburguesa span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background-color: #ffffff;
+    border-radius: 2px;
+    transition: all 0.2s;
+}
+
+#toast_confirmacion {
+    position: fixed;
+    bottom: 28px;
+    right: 28px;
+    background: linear-gradient(90deg, #1a56a0, #1e3a5f);
+    color: #fff;
+    padding: 14px 18px 14px 20px;
+    border-radius: 10px;
+    box-shadow: 0 6px 24px rgba(30, 58, 95, 0.3);
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-size: 13px;
+    font-weight: 500;
+    z-index: 999;
+    animation: toast_entrada 0.25s ease;
+}
+
+@keyframes toast_entrada {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.toast_cerrar {
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 14px;
+    cursor: pointer;
+    padding: 0;
+    line-height: 1;
+    transition: color 0.2s;
+    flex-shrink: 0;
+}
+
+.toast_cerrar:hover {
+    color: #fff;
+}
+
+@media screen and (max-width: 576px) {
+    main {
+        padding: 16px 10px;
+    }
+
+    .page_layout {
+        flex-direction: column;
+    }
+
+    .panel_historial {
+        display: none;
+    }
+
+    .fila_superior,
+    .fila_horario {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .bloque_horario {
+        gap: 6px;
+    }
+
+    .incidencia_item {
+        flex-direction: column;
+    }
+
+    .form_registro {
+        padding: 16px 14px;
+    }
+}

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SGRSI – Registro de Laboratorio</title>
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/Header&Footer.css">
+    <link rel="stylesheet" href="../css/insidencias.css">
+</head>
+<body>
+    <header>
+        <img src="../assets/iconos/GreenCurlLogo.png" alt="Logo SGRSI">
+        <div>
+            <h1 class="System_title">SGRSI</h1>
+            <p class="Parrafo">Sistema de gestión de recursos y soporte de informática</p>
+        </div>
+        <button class="btn_hamburguesa" id="btn_hamburguesa" title="Menú">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </header>
+    <main>
+        <div class="page_layout">
+            <section class="form_card">
+                <h2>Registro de uso de laboratorio de informática</h2>
+                <form class="form_registro" id="form_registro">
+                    <div class="fila_superior">
+                        <div class="bloque_tipo">
+                            <label class="tipo_label">
+                                <input type="checkbox" id="chk_laboratorio" name="tipo" value="Laboratorio">
+                                Laboratorio
+                            </label>
+                            <label class="tipo_label">
+                                <input type="checkbox" id="chk_taller" name="tipo" value="Taller">
+                                Taller
+                            </label>
+                        </div>
+                        <div class="bloque_numeros">
+                            <span class="numeros_label">N°</span>
+                            <div class="numeros_grupo">
+                                <label class="num_label"><input type="radio" name="numero_espacio" value="1"><span>1</span></label>
+                                <label class="num_label"><input type="radio" name="numero_espacio" value="2"><span>2</span></label>
+                                <label class="num_label"><input type="radio" name="numero_espacio" value="3"><span>3</span></label>
+                                <label class="num_label"><input type="radio" name="numero_espacio" value="4"><span>4</span></label>
+                                <label class="num_label"><input type="radio" name="numero_espacio" value="5"><span>5</span></label>
+                            </div>
+                        </div>
+                        <div class="bloque_fecha">
+                            <span class="field_label">Fecha:</span>
+                            <div class="fecha_inputs">
+                                <input type="text" class="input_fecha" placeholder="DD" maxlength="2" id="fecha_dd">
+                                <span class="fecha_sep">/</span>
+                                <input type="text" class="input_fecha" placeholder="MM" maxlength="2" id="fecha_mm">
+                                <span class="fecha_sep">/</span>
+                                <input type="text" class="input_fecha input_anio" placeholder="AAAA" maxlength="4" id="fecha_aaaa">
+                            </div>
+                        </div>
+
+                        <div class="bloque_grupo">
+                            <label class="field_label" for="grupo">Grupo</label>
+                            <input type="text" id="grupo" class="input_grupo" placeholder="Ej: 3A">
+                        </div>
+                    </div>
+                    <div class="fila_horario">
+                        <div class="bloque_horario">
+                            <span class="field_label">Hora inicio</span>
+                            <input type="text" class="input_hora" placeholder="HH:MM" maxlength="5" id="hora_inicio">
+                            <span class="hora_sep">–</span>
+                            <span class="field_label">Hora fin</span>
+                            <input type="text" class="input_hora" placeholder="HH:MM" maxlength="5" id="hora_fin">
+                        </div>
+                        <div class="bloque_turno">
+                            <span class="field_label">Turno</span>
+                            <div class="turno_grupo">
+                                <label class="turno_label"><input type="radio" name="turno" value="M"><span>M</span></label>
+                                <label class="turno_label"><input type="radio" name="turno" value="V"><span>V</span></label>
+                                <label class="turno_label"><input type="radio" name="turno" value="N"><span>N</span></label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form_input">
+                        <label class="field_label" for="materia">Materia</label>
+                        <input type="text" id="materia" placeholder="Nombre de la materia">
+                    </div>
+                    <div class="form_input">
+                        <label class="field_label" for="docente">Nombre y apellido del docente</label>
+                        <input type="text" id="docente" placeholder="Nombre y apellido">
+                    </div>
+                    <div class="seccion_incidencia" id="seccion_incidencia">
+                        <div id="incidencias_lista"></div>
+                        <button type="button" class="btn_agregar_incidencia" id="btn_agregar">
+                            + INCIDENCIA TÉCNICA
+                        </button>
+                    </div>
+                    <div class="form_actions">
+                        <button type="submit" class="btn_enviar">Enviar</button>
+                    </div>
+                </form>
+            </section>
+            <aside class="panel_historial">
+                <h3 class="historial_titulo">Historial de Registros</h3>
+                <div class="historial_tabla_wrap">
+                    <table class="historial_tabla">
+                        <thead>
+                            <tr>
+                                <th>Fecha</th>
+                                <th>Grupo</th>
+                                <th>Hora i.</th>
+                                <th>L</th>
+                                <th>X</th>
+                            </tr>
+                        </thead>
+                        <tbody id="historial_body"></tbody>
+                    </table>
+                    <p class="historial_vacio visible" id="historial_vacio">Sin registros aún.</p>
+                </div>
+            </aside>
+        </div>
+    </main>
+    <footer>
+        <div class="footer_item">
+            <p>Correo de contacto</p>
+            <p>ejemplo@ejemplo.com</p>
+        </div>
+        <div class="footer_item">
+            <p>Teléfono de contacto</p>
+            <p>555 555 5555</p>
+        </div>
+        <div class="footer_item">
+            <p>Dirección</p>
+            <p><a href="" title="Dirección">Mercedes 1131</a></p>
+        </div>
+    </footer>
+    <script src="../JavaScript/insidencias.js"></script>
+</body>
+
+</html>
