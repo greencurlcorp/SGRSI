@@ -10,8 +10,8 @@ chkTaller.addEventListener('change', () => {
 });
 
 
-const fechaDD   = document.getElementById('fecha_dd');
-const fechaMM   = document.getElementById('fecha_mm');
+const fechaDD = document.getElementById('fecha_dd');
+const fechaMM = document.getElementById('fecha_mm');
 const fechaAAAA = document.getElementById('fecha_aaaa');
 
 fechaDD.addEventListener('input', () => {
@@ -60,6 +60,75 @@ function eliminarIncidencia(id) {
     if (el) el.remove();
 }
 
+function escaparHtml(texto) {
+    const div = document.createElement('div');
+    div.textContent = texto;
+    return div.innerHTML;
+}
+
+function validarFecha(dd, mm, aaaa) {
+    if (!dd || !mm || !aaaa) {
+        return 'La fecha completa es obligatoria';
+    }
+    if (dd.length === 0 || mm.length === 0 || aaaa.length !== 4) {
+        return 'La fecha tiene un formato inválido';
+    }
+
+    const diaNum = parseInt(dd, 10);
+    const mesNum = parseInt(mm, 10);
+    const anioNum = parseInt(aaaa, 10);
+
+    if (isNaN(diaNum) || isNaN(mesNum) || isNaN(anioNum)) {
+        return 'La fecha debe contener solo números';
+    }
+    if (mesNum < 1 || mesNum > 12) {
+        return 'El mes debe estar entre 01 y 12';
+    }
+
+    const diasEnMes = new Date(anioNum, mesNum, 0).getDate();
+    if (diaNum < 1 || diaNum > diasEnMes) {
+        return 'El día ingresado no es válido para ese mes';
+    }
+
+    return null;
+}
+
+function validarFormulario() {
+    const errores = [];
+
+    const grupo = document.getElementById('grupo').value.trim();
+    const horaInicio = document.getElementById('hora_inicio').value.trim();
+
+    const errorFecha = validarFecha(fechaDD.value.trim(), fechaMM.value.trim(), fechaAAAA.value.trim());
+    if (errorFecha) errores.push(errorFecha);
+
+    if (!grupo) errores.push('El grupo es obligatorio');
+    if (!horaInicio) errores.push('La hora de inicio es obligatoria');
+
+    if (!chkLaboratorio.checked && !chkTaller.checked) {
+        errores.push('Debe seleccionar Laboratorio o Taller');
+    }
+
+    const numEspacio = document.querySelector('input[name="numero_espacio"]:checked');
+    if (!numEspacio) errores.push('Debe seleccionar un número de espacio');
+
+    const selectsIncidencia = incidenciasLista.querySelectorAll('.select_incidencia');
+    selectsIncidencia.forEach((select, index) => {
+        if (!select.value) {
+            errores.push(`Debe seleccionar un tipo en la incidencia ${index + 1}`);
+        }
+    });
+
+    const textareasIncidencia = incidenciasLista.querySelectorAll('.textarea_descripcion');
+    textareasIncidencia.forEach((textarea, index) => {
+        if (!textarea.value.trim()) {
+            errores.push(`Debe completar la descripción en la incidencia ${index + 1}`);
+        }
+    });
+
+    return errores;
+}
+
 const form = document.getElementById('form_registro');
 const historialBody = document.getElementById('historial_body');
 const historialVacio = document.getElementById('historial_vacio');
@@ -67,26 +136,38 @@ const historialVacio = document.getElementById('historial_vacio');
 form.addEventListener('submit', (e) => {
     e.preventDefault();
 
-    const dd   = fechaDD.value.padStart(2, '0')  || '--';
-    const mm   = fechaMM.value.padStart(2, '0')  || '--';
-    const aaaa = fechaAAAA.value                  || '----';
+    const errores = validarFormulario();
+    if (errores.length > 0) {
+        mostrarToast(errores.join(' | '), true);
+        return;
+    }
+
+    const dd = fechaDD.value.trim().padStart(2, '0');
+    const mm = fechaMM.value.trim().padStart(2, '0');
+    const aaaa = fechaAAAA.value.trim();
     const fecha = `${dd}/${mm}/${aaaa}`;
 
-    const grupo      = document.getElementById('grupo').value       || '–';
-    const horaInicio = document.getElementById('hora_inicio').value || '--:--';
+    const grupo = document.getElementById('grupo').value.trim();
+    const horaInicio = document.getElementById('hora_inicio').value.trim();
 
-    const tipoChecked = chkLaboratorio.checked ? 'L' : chkTaller.checked ? 'T' : '–';
-    const numEspacio  = document.querySelector('input[name="numero_espacio"]:checked');
-    const espacio     = numEspacio ? `${tipoChecked}${numEspacio.value}` : tipoChecked;
+    const tipoChecked = chkLaboratorio.checked ? 'L' : 'T';
+    const numEspacio = document.querySelector('input[name="numero_espacio"]:checked');
+    const espacio = `${tipoChecked}${numEspacio.value}`;
 
     const tr = document.createElement('tr');
+    tr.classList.add('fila_clickeable');
+    tr.title = 'Ver en Panel Técnico';
     tr.innerHTML = `
-        <td>${fecha}</td>
-        <td>${grupo}</td>
-        <td>${horaInicio}</td>
-        <td>${espacio}</td>
+        <td>${escaparHtml(fecha)}</td>
+        <td>${escaparHtml(grupo)}</td>
+        <td>${escaparHtml(horaInicio)}</td>
+        <td>${escaparHtml(espacio)}</td>
         <td><button class="btn_eliminar_registro" onclick="eliminarRegistro(this)" title="Eliminar">✕</button></td>
     `;
+    tr.addEventListener('click', (e) => {
+        if (e.target.closest('.btn_eliminar_registro')) return;
+        window.location.href = 'panel_tecnico.html';
+    });
     historialBody.appendChild(tr);
 
     actualizarHistorialVacio();
@@ -94,7 +175,7 @@ form.addEventListener('submit', (e) => {
     incidenciasLista.innerHTML = '';
     contadorIncidencias = 0;
 
-    mostrarToast('Registro enviado correctamente.');
+    mostrarToast('Registro enviado correctamente.', false);
 });
 
 function eliminarRegistro(btn) {
@@ -109,14 +190,15 @@ function actualizarHistorialVacio() {
 
 actualizarHistorialVacio();
 
-function mostrarToast(mensaje) {
+function mostrarToast(mensaje, esError) {
     const existente = document.getElementById('toast_confirmacion');
     if (existente) existente.remove();
 
     const toast = document.createElement('div');
     toast.id = 'toast_confirmacion';
+    toast.classList.add(esError ? 'toast_error' : 'toast_exito');
     toast.innerHTML = `
-        <span>${mensaje}</span>
+        <span>${escaparHtml(mensaje)}</span>
         <button class="toast_cerrar" onclick="this.parentElement.remove()" title="Cerrar">✕</button>
     `;
     document.body.appendChild(toast);
@@ -125,3 +207,4 @@ function mostrarToast(mensaje) {
         if (toast.parentElement) toast.remove();
     }, 4000);
 }
+
