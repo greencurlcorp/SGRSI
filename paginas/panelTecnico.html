@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SGRSI – Panel Técnico</title>
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/headeryFooter.css">
+    <link rel="stylesheet" href="../css/menuHamburguesa.css">
+    <link rel="stylesheet" href="../css/panelTecnico.css">
+</head>
+
+<body>
+    <header>
+        <img src="../assets/iconos/GreenCurlLogo.png" alt="Logo SGRSI">
+        <div>
+            <h1 class="System_title">SGRSI</h1>
+            <p class="Parrafo">Sistema de gestión de recursos y soporte de informática</p>
+        </div>
+        <button class="btn_hamburguesa" id="btn_hamburguesa" title="Menú">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <nav class="menu_desplegable" id="menu_desplegable">
+            <a href="panelTecnico.html" class="menu_item menu_item_activo">Panel técnico</a>
+            <a href="insidencias.html" class="menu_item">Registro de uso de sala de informática</a>
+            <a href="solicitar_prestamo.html" class="menu_item">Solicitar préstamo</a>
+        </nav>
+    </header>
+    <main>
+        <h2 class="titulo_panel">Panel técnico</h2>
+        <section class="panel_card">
+            <div class="panel_scroll" id="panel_scroll"></div>
+            <p class="panel_vacio visible" id="panel_vacio">No hay registros pendientes de revisión.</p>
+        </section>
+    </main>
+    <footer>
+        <div class="footer_item">
+            <p>Correo de contacto</p>
+            <p>ejemplo@ejemplo.com</p>
+        </div>
+        <div class="footer_item">
+            <p>Teléfono de contacto</p>
+            <p>555 555 5555</p>
+        </div>
+        <div class="footer_item">
+            <p>Dirección</p>
+            <p><a href="" title="Dirección">Mercedes 1131</a></p>
+        </div>
+    </footer>
+    <script src="../JavaScript/menuHamburguesa.js"></script>
+</body>
+
+</html>
