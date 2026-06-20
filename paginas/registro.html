@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SGRSI – Registro</title>
     <link rel="stylesheet" href="../css/global.css">
-    <link rel="stylesheet" href="../css/Header&Footer.css">
+    <link rel="stylesheet" href="../css/headeryFooter.css">
     <link rel="stylesheet" href="../css/register.css">
 </head>
 
@@ -31,13 +31,13 @@
                 <input type="text" placeholder="Cédula">
             </div>
             <div class="form_input">
-                <input type="email" placeholder="Correo electrónico">
+                <input type="email" required minlength="5" maxlength="50" placeholder="Correo electrónico">
             </div>
             <div class="form_input">
-                <input type="password" placeholder="Contraseña">
+                <input type="password" required minlength="8" placeholder="Contraseña">
             </div>
             <div class="form_input">
-                <input type="password" placeholder="Confirmar contraseña">
+                <input type="password" required minlength="8" placeholder="Confirmar contraseña">
             </div>
             <div class="form_input">
                 <button class="btn_volver" type="button" onclick="window.location.href='../index.html'">Volver</button>
