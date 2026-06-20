@@ -169,7 +169,7 @@ input[type="text"]:focus {
     cursor: pointer;
 }
 
-.num_label input[type="radio"]:checked + span {
+.num_label input[type="radio"]:checked+span {
     background: linear-gradient(135deg, #1a56a0, #1e3a5f);
     color: #fff;
     border-color: #1a56a0;
@@ -293,7 +293,7 @@ input[type="text"]:focus {
     cursor: pointer;
 }
 
-.turno_label input[type="radio"]:checked + span {
+.turno_label input[type="radio"]:checked+span {
     background: linear-gradient(135deg, #1a56a0, #1e3a5f);
     color: #fff;
     border-color: #1a56a0;
@@ -595,8 +595,15 @@ input[type="text"]:focus {
 }
 
 @keyframes toast_entrada {
-    from { opacity: 0; transform: translateY(12px); }
-    to   { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .toast_cerrar {
