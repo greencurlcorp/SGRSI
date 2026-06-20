@@ -111,10 +111,12 @@ input:focus {
 .btn_register:active {
     transform: translateY(0);
 }
-a{
+
+a {
     text-decoration: none;
     color: #1a56a0;
 }
+
 .btn_volver {
     flex: 1;
     height: 42px;
