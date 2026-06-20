@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SGRSI</title>
     <link rel="stylesheet" href="css/global.css">
-    <link rel="stylesheet" href="css/Header&Footer.css">
+    <link rel="stylesheet" href="css/headeryFooter.css">
     <link rel="stylesheet" href="css/login.css">
 </head>
 
@@ -27,11 +27,12 @@
                 <input type="text" placeholder="Cédula">
             </div>
             <div class="form_input">
-                <input type="password" placeholder="Contraseña">
+                <input type="password" required minlength="8" placeholder="Contraseña">
             </div>
             <div class="form_input">
                 <button class="btn_login" type="submit">Iniciar Sesión</button>
-                <button class="btn_register" type="button" onclick="window.location.href='paginas/registro.html'">Registrarse</button>
+                <button class="btn_register" type="button"
+                    onclick="window.location.href='paginas/registro.html'">Registrarse</button>
             </div>
             <div class="form_input">
                 <a class="forgot_password" href="#">¿Olvidaste tu contraseña?</a>
