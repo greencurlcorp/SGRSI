@@ -168,15 +168,45 @@ form.addEventListener('submit', (e) => {
         if (e.target.closest('.btn_eliminar_registro')) return;
         window.location.href = '../tecnico/panelIncidencias.html';
     });
-    historialBody.appendChild(tr);
+    fetch('../backend/api/incidencias.php', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+            fecha: `${aaaa}-${mm}-${dd}`,
+            grupo,
+            hora_inicio: horaInicio,
+            hora_fin: document.getElementById('hora_fin').value.trim(),
+            tipo_espacio: tipoChecked === 'L' ? 'laboratorio' : 'taller',
+            numero_espacio: numEspacio.value,
+            materia: document.getElementById('materia').value.trim(),
+            docente: document.getElementById('docente').value.trim()
+        })
+    }).then((response) => {
+        if (!response.ok) throw new Error('No se pudo guardar la incidencia.');
+        historialBody.appendChild(tr);
+        actualizarHistorialVacio();
+        form.reset();
+        incidenciasLista.innerHTML = '';
+        contadorIncidencias = 0;
+        mostrarToast('Registro enviado correctamente.', false);
+    }).catch(() => mostrarToast('No se pudo guardar la incidencia en MySQL.', true));
 
-    actualizarHistorialVacio();
-    form.reset();
-    incidenciasLista.innerHTML = '';
-    contadorIncidencias = 0;
-
-    mostrarToast('Registro enviado correctamente.', false);
 });
+
+async function cargarIncidencias() {
+    const response = await fetch('../backend/api/incidencias.php');
+    if (!response.ok) return;
+    const { incidencias } = await response.json();
+    historialBody.innerHTML = '';
+    incidencias.forEach((incidencia) => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `<td>${incidencia.fecha}</td><td>${incidencia.grupo}</td><td>${incidencia.hora_inicio}</td><td>${incidencia.tipo_espacio[0].toUpperCase()}</td><td>${incidencia.estado || 'Pendiente'}</td>`;
+        historialBody.appendChild(tr);
+    });
+    actualizarHistorialVacio();
+}
+
+cargarIncidencias();
 
 function eliminarRegistro(btn) {
     btn.closest('tr').remove();

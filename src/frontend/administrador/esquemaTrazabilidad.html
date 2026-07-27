@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SGRSI - Esquema de trazabilidad</title>
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/headeryFooter.css">
+    <link rel="stylesheet" href="../css/menuHamburguesa.css">
+    <link rel="stylesheet" href="../css/trazabilidad.css">
+</head>
+<body>
+    <header>
+        <img src="../../../assets/iconos/GreenCurlLogo.png" alt="Logo SGRSI">
+        <div><h1 class="System_title">SGRSI</h1><p class="Parrafo">Sistema de gestión de recursos y soporte de informática</p></div>
+        <button class="btn_hamburguesa" id="btn_hamburguesa" title="Menú"><span></span><span></span><span></span></button>
+        <nav class="menu_desplegable" id="menu_desplegable">
+            <a href="panelUsuarios.html" class="menu_item">Panel de usuarios</a>
+            <a href="esquemaTrazabilidad.html" class="menu_item menu_item_activo">Esquema de trazabilidad</a>
+        </nav>
+    </header>
+    <main><section class="estadisticas"><h2>Esquema de trazabilidad</h2><div class="estadisticas_grid">
+        <article class="estadistica_card"><h3>Salones con más incidencias</h3><ul id="lista_salones"></ul></article>
+        <article class="estadistica_card"><h3>Software más solicitado</h3><ul id="lista_software"></ul></article>
+        <article class="estadistica_card"><h3>Estados de incidencias</h3><ul id="lista_estados"></ul></article>
+        <article class="estadistica_card"><h3>Prioridades</h3><ul id="lista_prioridades"></ul></article>
+    </div></section></main>
+    <script src="../js/menuHamburguesa.js"></script>
+    <script src="../js/auth.js"></script>
+    <script>protegerRuta('administrador');</script>
+    <script src="../js/trazabilidad.js"></script>
+</body>
+</html>

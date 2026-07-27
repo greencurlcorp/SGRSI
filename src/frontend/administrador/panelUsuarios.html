@@ -31,6 +31,7 @@
                 <div class="panel_usuarios_acciones">
                     <button id="guardar_roles" class="btn_guardar_roles">Guardar cambios</button>
                     <button id="ver_solicitudes" class="btn_solicitudes">Solicitudes de registro</button>
+                    <a href="esquemaTrazabilidad.html" class="btn_solicitudes">Esquema de trazabilidad</a>
                 </div>
             </div>
             <table id="tabla_usuarios" class="tabla_usuarios">
@@ -47,8 +48,8 @@
 
     <script src="../js/menuHamburguesa.js"></script>
     <script src="../js/auth.js"></script>
+    <script>protegerRuta('administrador');</script>
     <script src="../js/notificaciones.js"></script>
     <script src="../js/adminUsuarios.js"></script>
-    <script>protegerRuta('administrador');</script>
 </body>
 </html>

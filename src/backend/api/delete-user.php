@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__ . '/../config.php';
+$current = requireRole('administrador');
 $data = jsonInput();
 $target = $pdo->prepare('SELECT rol FROM usuarios WHERE id = ?');
 $target->execute([$data['id'] ?? 0]);

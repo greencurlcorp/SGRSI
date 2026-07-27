@@ -1,4 +1,5 @@
 <?php
+session_start();
 header('Content-Type: application/json; charset=utf-8');
 header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Headers: Content-Type, Authorization');
@@ -18,4 +19,11 @@ function response(array $data, int $status = 200): never {
     http_response_code($status);
     echo json_encode($data, JSON_UNESCAPED_UNICODE);
     exit;
+}
+
+function requireRole(?string $role = null): array {
+    $user = $_SESSION['user'] ?? null;
+    if (!$user) response(['error' => 'Sesión no válida.'], 401);
+    if ($role !== null && $user['rol'] !== $role) response(['error' => 'Acceso denegado.'], 403);
+    return $user;
 }

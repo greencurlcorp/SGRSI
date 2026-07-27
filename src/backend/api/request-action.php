@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__ . '/../config.php';
+$current = requireRole('administrador');
 $data = jsonInput();
 $id = $data['id'] ?? 0;
 if (($data['accion'] ?? '') === 'aprobar') {

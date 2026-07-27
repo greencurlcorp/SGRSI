@@ -10,7 +10,6 @@ if (formularioLogin) formularioLogin.addEventListener('submit', async (evento) =
         mensaje.className = 'mensaje_login error';
         return;
     }
-    sessionStorage.setItem('srgsi_token', resultado.token);
     sessionStorage.setItem('srgsi_usuario', JSON.stringify(resultado.user));
     const destinos = { docente: 'src/frontend/solicitante/planillaIncidencias.html', tecnico: 'src/frontend/tecnico/panelIncidencias.html', administrador: 'src/frontend/administrador/panelUsuarios.html' };
     window.location.href = destinos[resultado.user.rol];

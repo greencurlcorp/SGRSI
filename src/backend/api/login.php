@@ -12,4 +12,6 @@ $stmt->execute([$data['cedula'] ?? '']);
 $user = $stmt->fetch(PDO::FETCH_ASSOC);
 if (!$user || !password_verify($data['contrasena'] ?? '', $user['password_hash'])) response(['error' => 'Credenciales incorrectas.'], 401);
 unset($user['password_hash']);
+session_regenerate_id(true);
+$_SESSION['user'] = $user;
 response(['user' => $user]);
