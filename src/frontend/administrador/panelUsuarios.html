@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SGRSI - Panel de usuarios</title>
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/headeryFooter.css">
+    <link rel="stylesheet" href="../css/menuHamburguesa.css">
+    <link rel="stylesheet" href="../css/panelUsuarios.css">
+    <link rel="stylesheet" href="../css/notificaciones.css">
+</head>
+<body>
+    <header>
+        <img src="../../../assets/iconos/GreenCurlLogo.png" alt="Logo SGRSI">
+        <div>
+            <h1 class="System_title">SGRSI</h1>
+            <p class="Parrafo">Sistema de gestión de recursos y soporte de informática</p>
+        </div>
+        <button class="btn_hamburguesa" id="btn_hamburguesa" title="Menú"><span></span><span></span><span></span></button>
+        <nav class="menu_desplegable" id="menu_desplegable">
+            <a href="panelRegistro.html" class="menu_item">Panel de registro</a>
+            <a href="panelUsuarios.html" class="menu_item menu_item_activo">Panel de usuarios</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="panel_usuarios">
+            <div class="panel_usuarios_titulo">
+                <h2>Panel de usuarios</h2>
+                <div class="panel_usuarios_acciones">
+                    <button id="guardar_roles" class="btn_guardar_roles">Guardar cambios</button>
+                    <button id="ver_solicitudes" class="btn_solicitudes">Solicitudes de registro</button>
+                </div>
+            </div>
+            <table id="tabla_usuarios" class="tabla_usuarios">
+                <thead><tr><th>Nombre</th><th>Cédula</th><th>Correo</th><th>Rol</th><th>Acción</th></tr></thead>
+                <tbody></tbody>
+            </table>
+            <p id="usuarios_vacio" class="usuarios_vacio">Todavía no hay usuarios registrados.</p>
+            <section id="solicitudes_registro" class="solicitudes_registro" hidden>
+                <h3>Solicitudes de registro</h3>
+                <div id="lista_solicitudes"></div>
+            </section>
+        </section>
+    </main>
+
+    <script src="../js/menuHamburguesa.js"></script>
+    <script src="../js/auth.js"></script>
+    <script src="../js/notificaciones.js"></script>
+    <script src="../js/adminUsuarios.js"></script>
+    <script>protegerRuta('administrador');</script>
+</body>
+</html>

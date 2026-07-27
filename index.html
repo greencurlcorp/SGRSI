@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SGRSI</title>
+    <link rel="stylesheet" href="src/frontend/css/global.css">
+    <link rel="stylesheet" href="src/frontend/css/headeryFooter.css">
+    <link rel="stylesheet" href="src/frontend/css/login.css">
+</head>
+
+<body>
+    <header>
+        <img src="./assets/iconos/GreenCurlLogo.png" alt="Logo SGRSI">
+        <div>
+            <h1 class="System_title">SGRSI</h1>
+            <p class="Parrafo">Sistema de gestión de recursos y soporte de informática</p>
+        </div>
+    </header>
+
+    <main>
+        <form class="form_login">
+            <h2>Ingrese su cédula y contraseña</h2>
+
+            <div class="form_input">
+                <input type="text" placeholder="Cédula">
+            </div>
+            <div class="form_input">
+                <input type="password" required minlength="8" placeholder="Contraseña">
+            </div>
+            <div class="form_input">
+                <button class="btn_login" type="submit">Iniciar Sesión</button>
+                <a class="btn_register" href="/SRGSI/src/frontend/administrador/panelRegistro.html">Registrarse</a>
+            </div>
+            <div class="form_input">
+                <a class="forgot_password" href="#">¿Olvidaste tu contraseña?</a>
+            </div>
+            <p id="mensaje_login" class="mensaje_login" aria-live="polite"></p>
+        </form>
+    </main>
+
+    <footer>
+        <div class="footer_item">
+            <p>Correo de contacto</p>
+            <p>ejemplo@ejemplo.com</p>
+        </div>
+        <div class="footer_item">
+            <p>Teléfono de contacto</p>
+            <p>555 555 5555</p>
+        </div>
+        <div class="footer_item">
+            <p>Dirección</p>
+            <p><a href="" title="Dirección">Mercedes 1131</a></p>
+        </div>
+    </footer>
+    <script src="src/frontend/js/auth.js"></script>
+    <script src="src/frontend/js/login.js"></script>
+</body>
+
+</html>

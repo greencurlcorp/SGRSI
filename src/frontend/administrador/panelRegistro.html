@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SGRSI – Registro</title>
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/headeryFooter.css">
+    <link rel="stylesheet" href="../css/register.css">
+    <link rel="stylesheet" href="../css/notificaciones.css">
+</head>
+
+<body>
+    <header>
+        <img src="../../../assets/iconos/GreenCurlLogo.png" alt="Logo SGRSI">
+        <div>
+            <h1 class="System_title">SGRSI</h1>
+            <p class="Parrafo">Sistema de gestión de recursos y soporte de informática</p>
+        </div>
+    </header>
+
+    <main>
+        <form class="form_register">
+            <h2>Registro de usuario</h2>
+
+            <div class="form_input">
+                <input type="text" placeholder="Nombre">
+                <input type="text" placeholder="Apellido">
+            </div>
+            <div class="form_input">
+                <input type="text" placeholder="Cédula">
+            </div>
+            <div class="form_input">
+                <input type="email" required minlength="5" maxlength="50" placeholder="Correo electrónico">
+            </div>
+            <div class="form_input">
+                <input type="password" required minlength="8" placeholder="Contraseña">
+            </div>
+            <div class="form_input">
+                <input type="password" required minlength="8" placeholder="Confirmar contraseña">
+            </div>
+            <div class="form_input">
+                <button class="btn_volver" type="button" onclick="window.location.href='../../../index.html'">Volver</button>
+                <button class="btn_register" type="submit">Registrarse</button>
+            </div>
+        </form>
+    </main>
+
+    <footer>
+        <div class="footer_item">
+            <p>Correo de contacto</p>
+            <p>ejemplo@ejemplo.com</p>
+        </div>
+        <div class="footer_item">
+            <p>Teléfono de contacto</p>
+            <p>555 555 5555</p>
+        </div>
+        <div class="footer_item">
+            <p>Dirección</p>
+            <p><a href="" title="Dirección">Mercedes 1131</a></p>
+        </div>
+    </footer>
+    <script src="../js/auth.js"></script>
+    <script src="../js/notificaciones.js"></script>
+    <script src="../js/registro.js"></script>
+</body>
+
+</html>

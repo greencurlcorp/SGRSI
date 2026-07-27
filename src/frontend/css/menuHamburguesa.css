@@ -1,0 +1,103 @@
+.btn_hamburguesa {
+    margin-left: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 6px 8px;
+    border-radius: 6px;
+    transition: background-color 0.2s;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 30;
+}
+
+.btn_hamburguesa:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+.btn_hamburguesa span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background-color: #ffffff;
+    border-radius: 2px;
+    transition: all 0.2s;
+}
+
+.btn_hamburguesa.activo span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+
+.btn_hamburguesa.activo span:nth-child(2) {
+    opacity: 0;
+}
+
+.btn_hamburguesa.activo span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+.menu_desplegable {
+    position: absolute;
+    top: 64px;
+    right: 16px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(30, 58, 95, 0.25);
+    display: flex;
+    flex-direction: column;
+    min-width: 260px;
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-8px);
+    transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s;
+    z-index: 200;
+}
+
+.menu_desplegable.abierto {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.menu_item {
+    padding: 13px 18px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #1e3a5f;
+    text-decoration: none;
+    border-bottom: 1px solid #eef2f7;
+    transition: background-color 0.18s, color 0.18s;
+}
+
+.menu_item:last-child {
+    border-bottom: none;
+}
+
+.menu_item:hover {
+    background-color: #f0f4fa;
+    color: #1a56a0;
+}
+
+.menu_item_activo {
+    color: #ffffff;
+    background: linear-gradient(90deg, #1a56a0, #1e3a5f);
+}
+
+.menu_item_activo:hover {
+    color: #ffffff;
+    background: linear-gradient(90deg, #1e62b8, #234a72);
+}
+
+@media screen and (max-width: 576px) {
+    .menu_desplegable {
+        top: 56px;
+        right: 10px;
+        left: 10px;
+        min-width: unset;
+    }
+}

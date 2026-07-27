@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SGRSI - Planilla de solicitudes</title>
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/headeryFooter.css">
+    <link rel="stylesheet" href="../css/menuHamburguesa.css">
+    <link rel="stylesheet" href="../css/incidencias.css">
+    <link rel="stylesheet" href="../css/planillaSolicitud.css">
+</head>
+<body>
+    <header>
+        <img src="../../../assets/iconos/GreenCurlLogo.png" alt="Logo SGRSI">
+        <div>
+            <h1 class="System_title">SGRSI</h1>
+            <p class="Parrafo">Sistema de gestión de recursos y soporte de informática</p>
+        </div>
+        <button class="btn_hamburguesa" id="btn_hamburguesa" title="Menú"><span></span><span></span><span></span></button>
+        <nav class="menu_desplegable" id="menu_desplegable">
+            <a href="planillaIncidencias.html" class="menu_item">Planilla de incidencias</a>
+            <a href="planillaSolicitud.html" class="menu_item menu_item_activo">Planilla de solicitudes</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="page_layout">
+            <section class="form_card">
+                <h2>Solicitud de software</h2>
+                <form class="form_registro solicitud_form">
+                    <div class="solicitud_bloque">
+                        <div class="solicitud_opciones">
+                            <label class="field_label">Tipo de clase</label>
+                            <label class="opcion"><input type="radio" name="clase" value="teorico"> Teórico</label>
+                            <label class="opcion"><input type="radio" name="clase" value="taller"> Taller</label>
+                            <label class="opcion"><input type="radio" name="clase" value="laboratorio" checked> Laboratorio</label>
+                        </div>
+                        <div class="solicitud_datos">
+                            <label class="field_label" for="fecha">Fecha</label>
+                            <input type="date" id="fecha" required>
+                            <label class="field_label" for="grupo">Grupo</label>
+                            <input type="text" id="grupo" placeholder="Ej: 3A" required>
+                        </div>
+                    </div>
+
+                    <div class="solicitud_bloque solicitud_campos">
+                        <label class="field_label" for="docente">Nombre y apellido del docente</label>
+                        <input type="text" id="docente" placeholder="Nombre y apellido" required>
+                        <label class="field_label" for="asignatura">Asignatura</label>
+                        <input type="text" id="asignatura" placeholder="Nombre de la asignatura" required>
+                    </div>
+
+                    <div class="solicitud_bloque solicitud_campos">
+                        <label class="field_label" for="equiposAInstalar">Equipos a instalar</label>
+                        <select id="equiposAInstalar" required>
+                            <option value="">Seleccionar</option>
+                            <option value="todos">Todos los equipos</option>
+                            <option value="docente">Solo equipo del docente</option>
+                            <option value="estudiantes">Solo equipos de estudiantes</option>
+                        </select>
+                        <label class="field_label" for="comentarioPc">Software solicitado</label>
+                        <textarea id="comentarioPc" rows="4" placeholder="Indique el software y la versión necesaria" required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn_enviar">Enviar solicitud</button>
+                </form>
+            </section>
+
+            <aside class="panel_historial">
+                <h3 class="historial_titulo">Historial de solicitudes</h3>
+                <div class="historial_tabla_wrap">
+                    <table class="historial_tabla">
+                        <thead><tr><th>Fecha</th><th>Asignatura</th><th>Estado</th></tr></thead>
+                        <tbody><tr><td colspan="3">Sin solicitudes aún.</td></tr></tbody>
+                    </table>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer_item"><p>Correo de contacto</p><p>ejemplo@ejemplo.com</p></div>
+        <div class="footer_item"><p>Teléfono de contacto</p><p>555 555 5555</p></div>
+        <div class="footer_item"><p>Dirección</p><p>Mercedes 1131</p></div>
+    </footer>
+    <script src="../js/menuHamburguesa.js"></script>
+    <script src="../js/auth.js"></script>
+    <script>protegerRuta('docente');</script>
+</body>
+</html>
