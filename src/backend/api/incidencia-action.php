@@ -20,6 +20,12 @@ if ($current['rol'] === 'tecnico' || $current['rol'] === 'administrador') {
         $stmt = $pdo->prepare('DELETE FROM incidencias WHERE id = ?');
         $stmt->execute([$id]);
     }
+    $snapshot = $pdo->prepare('SELECT estado_id, prioridad_id FROM incidencias WHERE id = ?');
+    $snapshot->execute([$id]);
+    if ($row = $snapshot->fetch(PDO::FETCH_ASSOC)) {
+        $history = $pdo->prepare('INSERT INTO historial_incidencias (incidencia_id, usuario_id, estado_id, prioridad_id, comentario) VALUES (?, ?, ?, ?, ?)');
+        $history->execute([$id, $current['id'], $row['estado_id'], $row['prioridad_id'], $data['comentario'] ?? 'Actualización realizada desde el panel técnico.']);
+    }
     response(['message' => 'Incidencia actualizada.']);
 }
 response(['error' => 'No tienes permisos para modificar incidencias.'], 403);

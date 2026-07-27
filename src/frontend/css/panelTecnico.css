@@ -124,6 +124,13 @@ main {
     display: block;
 }
 
+.incidencia_tecnica { display:flex; justify-content:space-between; align-items:center; gap:16px; padding:16px; border:1px solid #d1dae8; border-radius:10px; background:#f8fafc; }
+.incidencia_tecnica small { display:block; margin-top:5px; color:#64748b; }
+.incidencia_controles { display:flex; flex-wrap:wrap; gap:8px; justify-content:flex-end; }
+.incidencia_controles select, .incidencia_controles button { padding:8px 10px; border:1px solid #cbd7e8; border-radius:7px; background:#fff; color:#1e3a5f; }
+.incidencia_controles button { background:#315da6; color:#fff; cursor:pointer; }
+.incidencia_controles .btn_eliminar_incidencia { background:#b91c1c; }
+
 @media screen and (max-width: 576px) {
     main {
         padding: 16px 10px;
