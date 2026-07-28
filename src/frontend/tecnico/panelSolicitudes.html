@@ -27,22 +27,8 @@
     </header>
 
     <main>
-        <h2 class="titulo_panel">Panel de solicitudes</h2>
+        <div class="panel_titulo_filtro"><h2 class="titulo_panel">Panel de solicitudes</h2><label for="filtro">Filtrar por<select name="filtro" id="filtro"><option value="todos">Todos</option><option value="pendiente">Pendiente</option><option value="en_proceso">En proceso</option><option value="resuelta">Resuelta</option><option value="Alta">Prioridad alta</option><option value="Media">Prioridad media</option><option value="Baja">Prioridad baja</option></select></label></div>
         <section class="panel_card solicitudes_card">
-            <div class="solicitudes_encabezado">
-                <p>Solicitudes de software y recursos</p>
-                <label for="filtro">Filtrar por
-                    <select name="filtro" id="filtro">
-                        <option value="todos">Todos</option>
-                        <option value="sinResolver">Sin resolver</option>
-                        <option value="enProceso">En proceso</option>
-                        <option value="resuelto">Resuelto</option>
-                        <option value="prioridadAlta">Prioridad alta</option>
-                        <option value="prioridadMedia">Prioridad media</option>
-                        <option value="prioridadBaja">Prioridad baja</option>
-                    </select>
-                </label>
-            </div>
             <ul class="solicitudes_lista">
                 <li class="solicitud_item alta sinResolver">
                     <div><h3>Sin resolver</h3><small>VS Code 20.2</small></div><span>Alta</span>
@@ -55,6 +41,7 @@
                 </li>
             </ul>
         </section>
+        <section id="detalle_solicitud" class="detalle_solicitud" hidden></section>
     </main>
 
     <script src="../js/menuHamburguesa.js"></script>

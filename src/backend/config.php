@@ -1,6 +1,7 @@
 <?php
 session_start();
 header('Content-Type: application/json; charset=utf-8');
+ini_set('default_charset', 'UTF-8');
 header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Headers: Content-Type, Authorization');
 header('Access-Control-Allow-Methods: GET, POST, PATCH, OPTIONS');
@@ -9,6 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') exit;
 
 $pdo = new PDO('mysql:host=localhost;dbname=srgsi;charset=utf8mb4', 'root', '');
 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+$pdo->exec("SET NAMES utf8mb4 COLLATE utf8mb4_unicode_ci");
 $pdo->exec("DELETE FROM solicitudes_rechazadas WHERE rechazado_en < DATE_SUB(NOW(), INTERVAL 7 DAY)");
 
 function jsonInput(): array {

@@ -17,6 +17,10 @@ main {
     margin: 6px 0 22px 0;
 }
 
+.panel_titulo_filtro { width: 100%; max-width: 1100px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+.panel_titulo_filtro label { display: flex; align-items: center; gap: 10px; color: #1e3a5f; font-weight: 600; }
+.panel_titulo_filtro select { border: 1px solid #d1dae8; border-radius: 8px; padding: 8px 10px; color: #1e3a5f; background: #fff; }
+
 .panel_card {
     width: 100%;
     max-width: 1100px;
@@ -125,16 +129,40 @@ main {
 }
 
 .incidencia_tecnica { display:flex; justify-content:space-between; align-items:center; gap:16px; padding:16px; border:1px solid #d1dae8; border-radius:10px; background:#f8fafc; }
+.incidencia_tecnica.alta { border-left: 5px solid #dc2626; }
+.incidencia_tecnica.media { border-left: 5px solid #eab308; }
+.incidencia_tecnica.baja { border-left: 5px solid #16a34a; }
+.incidencia_tecnica > span { border-radius:999px; padding:6px 12px; font-size:12px; font-weight:700; }
+.incidencia_tecnica.alta > span { background:#fee2e2; color:#b91c1c; }
+.incidencia_tecnica.media > span { background:#fef3c7; color:#a16207; }
+.incidencia_tecnica.baja > span { background:#dcfce7; color:#15803d; }
 .incidencia_tecnica small { display:block; margin-top:5px; color:#64748b; }
 .incidencia_controles { display:flex; flex-wrap:wrap; gap:8px; justify-content:flex-end; }
 .incidencia_controles select, .incidencia_controles button { padding:8px 10px; border:1px solid #cbd7e8; border-radius:7px; background:#fff; color:#1e3a5f; }
 .incidencia_controles button { background:#315da6; color:#fff; cursor:pointer; }
 .incidencia_controles .btn_eliminar_incidencia { background:#b91c1c; }
+.incidencia_tecnica { cursor: pointer; }
+.detalle_incidencia { width: min(100% - 32px, 1100px); margin: 20px auto; padding: 22px; border-radius: 12px; background: #fff; box-shadow: 0 8px 28px rgba(30,58,95,.12); color: #475569; }
+.detalle_incidencia h3 { margin-top: 0; color: #1e3a5f; }
+.detalle_incidencia label { display: inline-flex; align-items: center; gap: 8px; margin: 10px 14px 0 0; color: #1e3a5f; font-weight: 600; }
+.detalle_incidencia select, .detalle_incidencia button { padding: 9px 12px; border: 1px solid #cbd7e8; border-radius: 8px; background: #f8fafc; color: #1e3a5f; }
+.detalle_incidencia button { border: 0; background: linear-gradient(90deg,#1a56a0,#1e3a5f); color: #fff; font-weight: 700; cursor: pointer; }
+.detalle_incidencia .btn_eliminar_detalle { background: #b91c1c; }
+.detalle_volver { display: inline-block; margin-bottom: 18px; color: #1a56a0; font-weight: 700; text-decoration: none; }
+.detalle_incidencia h2 { color: #1e3a5f; margin: 0 0 20px; }
+.detalle_datos { border-top: 1px solid #d1dae8; padding-top: 12px; }
+.detalle_controles { display: flex; align-items: end; flex-wrap: wrap; gap: 14px; margin-top: 22px; }
+.detalle_controles label { display: flex; flex-direction: column; align-items: stretch; gap: 6px; margin: 0; }
+.detalle_controles select { min-width: 150px; }
+.detalle_controles .btn, .detalle_controles button { padding: 11px 18px; border: 0; border-radius: 8px; background: linear-gradient(90deg, #1a56a0, #1e3a5f); color: #fff; font-weight: 700; cursor: pointer; }
 
 @media screen and (max-width: 576px) {
     main {
         padding: 16px 10px;
     }
+
+    .panel_titulo_filtro { align-items: stretch; flex-direction: column; }
+    .panel_titulo_filtro label { justify-content: space-between; }
 
     .registro_tecnico {
         flex-direction: column;

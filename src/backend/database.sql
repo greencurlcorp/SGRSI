@@ -47,6 +47,7 @@ CREATE TABLE IF NOT EXISTS solicitudes_software (
     creado_en TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON DELETE CASCADE
 );
+ALTER TABLE solicitudes_software ADD COLUMN IF NOT EXISTS prioridad ENUM('Baja', 'Media', 'Alta') NOT NULL DEFAULT 'Media';
 
 CREATE TABLE IF NOT EXISTS estados_incidencias (
     id TINYINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
@@ -83,5 +84,5 @@ CREATE TABLE IF NOT EXISTS historial_incidencias (
     FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON DELETE CASCADE
 );
 
-INSERT IGNORE INTO estados_incidencias (nombre) VALUES ('Pendiente'), ('En proceso'), ('Resuelta'), ('Rechazada');
+INSERT IGNORE INTO estados_incidencias (nombre) VALUES ('Pendiente'), ('En proceso'), ('Resuelto'), ('Rechazada');
 INSERT IGNORE INTO prioridades (nombre) VALUES ('Baja'), ('Media'), ('Alta');

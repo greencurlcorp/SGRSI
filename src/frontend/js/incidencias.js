@@ -168,7 +168,7 @@ form.addEventListener('submit', (e) => {
         if (e.target.closest('.btn_eliminar_registro')) return;
         window.location.href = '../tecnico/panelIncidencias.html';
     });
-    fetch('../backend/api/incidencias.php', {
+    fetch('../../backend/api/incidencias.php', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({
@@ -194,7 +194,7 @@ form.addEventListener('submit', (e) => {
 });
 
 async function cargarIncidencias() {
-    const response = await fetch('../backend/api/incidencias.php');
+    const response = await fetch('../../backend/api/incidencias.php');
     if (!response.ok) return;
     const { incidencias } = await response.json();
     historialBody.innerHTML = '';

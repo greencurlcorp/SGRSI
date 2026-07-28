@@ -29,11 +29,12 @@
         </nav>
     </header>
     <main>
-        <h2 class="titulo_panel">Panel de incidencias</h2>
+        <div class="panel_titulo_filtro"><h2 class="titulo_panel">Panel de incidencias</h2><label for="filtro_incidencias">Filtrar por<select id="filtro_incidencias"><option value="todos">Todos</option><option value="Pendiente">Pendiente</option><option value="En proceso">En proceso</option><option value="Resuelto">Resuelto</option><option value="Rechazada">Rechazada</option><option value="Alta">Prioridad alta</option><option value="Media">Prioridad media</option><option value="Baja">Prioridad baja</option></select></label></div>
         <section class="panel_card">
             <div class="panel_scroll" id="lista_incidencias"></div>
             <p class="panel_vacio visible" id="panel_vacio">No hay registros pendientes de revisión.</p>
         </section>
+        <section id="detalle_incidencia" class="detalle_incidencia" hidden></section>
     </main>
     <footer>
         <div class="footer_item">
