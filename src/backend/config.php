@@ -26,6 +26,7 @@ function response(array $data, int $status = 200): never {
 function requireRole(?string $role = null): array {
     $user = $_SESSION['user'] ?? null;
     if (!$user) response(['error' => 'Sesión no válida.'], 401);
-    if ($role !== null && $user['rol'] !== $role) response(['error' => 'Acceso denegado.'], 403);
+    $jerarquia = ['docente' => 1, 'tecnico' => 2, 'administrador' => 3];
+    if ($role !== null && ($jerarquia[$user['rol']] ?? 0) < ($jerarquia[$role] ?? 99)) response(['error' => 'Acceso denegado.'], 403);
     return $user;
 }

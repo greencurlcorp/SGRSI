@@ -19,8 +19,9 @@
         </div>
         <button class="btn_hamburguesa" id="btn_hamburguesa" title="Menú"><span></span><span></span><span></span></button>
         <nav class="menu_desplegable" id="menu_desplegable">
-            <a href="panelRegistro.html" class="menu_item">Panel de registro</a>
+            <a href="esquemaTrazabilidad.html" class="menu_item">Esquema de trazabilidad</a>
             <a href="panelUsuarios.html" class="menu_item menu_item_activo">Panel de usuarios</a>
+            <a href="../../../index.html" class="menu_item" id="cerrar_sesion">Cerrar sesión</a>
         </nav>
     </header>
 
@@ -31,7 +32,6 @@
                 <div class="panel_usuarios_acciones">
                     <button id="guardar_roles" class="btn_guardar_roles">Guardar cambios</button>
                     <button id="ver_solicitudes" class="btn_solicitudes">Solicitudes de registro</button>
-                    <a href="esquemaTrazabilidad.html" class="btn_solicitudes">Esquema de trazabilidad</a>
                 </div>
             </div>
             <table id="tabla_usuarios" class="tabla_usuarios">
@@ -49,6 +49,7 @@
     <script src="../js/menuHamburguesa.js"></script>
     <script src="../js/auth.js"></script>
     <script>protegerRuta('administrador');</script>
+    <script>document.getElementById('cerrar_sesion').addEventListener('click', () => sessionStorage.removeItem('srgsi_usuario'));</script>
     <script src="../js/notificaciones.js"></script>
     <script src="../js/adminUsuarios.js"></script>
 </body>

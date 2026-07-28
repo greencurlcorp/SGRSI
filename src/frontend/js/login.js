@@ -11,6 +11,5 @@ if (formularioLogin) formularioLogin.addEventListener('submit', async (evento) =
         return;
     }
     sessionStorage.setItem('srgsi_usuario', JSON.stringify(resultado.user));
-    const destinos = { docente: 'src/frontend/solicitante/planillaIncidencias.html', tecnico: 'src/frontend/tecnico/panelIncidencias.html', administrador: 'src/frontend/administrador/panelUsuarios.html' };
-    window.location.href = destinos[resultado.user.rol];
+    window.location.href = 'src/frontend/landing.html';
 });

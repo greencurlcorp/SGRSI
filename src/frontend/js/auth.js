@@ -14,7 +14,8 @@ function obtenerSesion() {
 
 function protegerRuta(rolPermitido) {
     const sesion = obtenerSesion();
-    if (!sesion || sesion.rol !== rolPermitido) {
+    const jerarquia = { docente: 1, tecnico: 2, administrador: 3 };
+    if (!sesion || (jerarquia[sesion.rol] || 0) < (jerarquia[rolPermitido] || 99)) {
         window.location.replace(new URL('../../../index.html', window.location.href).href);
     }
 }

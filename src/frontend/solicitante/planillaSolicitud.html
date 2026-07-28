@@ -21,6 +21,7 @@
         <nav class="menu_desplegable" id="menu_desplegable">
             <a href="planillaIncidencias.html" class="menu_item">Planilla de incidencias</a>
             <a href="planillaSolicitud.html" class="menu_item menu_item_activo">Planilla de solicitudes</a>
+            <a href="../../../index.html" class="menu_item" id="cerrar_sesion">Cerrar sesión</a>
         </nav>
     </header>
 
@@ -87,5 +88,6 @@
     <script src="../js/menuHamburguesa.js"></script>
     <script src="../js/auth.js"></script>
     <script>protegerRuta('docente');</script>
+    <script>document.getElementById('cerrar_sesion').addEventListener('click', () => sessionStorage.removeItem('srgsi_usuario'));</script>
 </body>
 </html>

@@ -1,17 +1,6 @@
-const API_ESTADISTICAS = '../backend/api/stats.php';
-
-function listaEstadistica(id, items, etiqueta) {
-    const lista = document.getElementById(id);
-    lista.innerHTML = items.length ? items.map(item => `<li><span>${item[etiqueta]}</span><strong>${item.total}</strong></li>`).join('') : '<li>Sin datos todavía</li>';
-}
-
-async function cargarEstadisticas() {
-    const respuesta = await fetch(API_ESTADISTICAS);
-    const datos = await respuesta.json();
-    listaEstadistica('lista_salones', datos.salones, 'salon');
-    listaEstadistica('lista_software', datos.software, 'software');
-    listaEstadistica('lista_estados', datos.estados, 'nombre');
-    listaEstadistica('lista_prioridades', datos.prioridades, 'nombre');
-}
-
-cargarEstadisticas();
+const API_ESTADISTICAS = '../../backend/api/stats.php';
+function listaEstadistica(id, items, etiqueta) { const lista = document.getElementById(id); lista.innerHTML = items.length ? items.map(item => `<li><span>${item[etiqueta]}</span><strong>${item.total}</strong></li>`).join('') : '<li>Sin datos todavía</li>'; }
+function dibujarTorta(items) { const canvas = document.getElementById('grafico_prioridades'), ctx = canvas.getContext('2d'); canvas.width = 280; canvas.height = 220; const colores = ['#dc2626','#eab308','#16a34a','#647569']; const total = items.reduce((s,i)=>s+Number(i.total),0)||1; let inicio=-Math.PI/2; items.forEach((item,index)=>{const parte=Number(item.total)/total*Math.PI*2;ctx.beginPath();ctx.moveTo(105,110);ctx.arc(105,110,85,inicio,inicio+parte);ctx.closePath();ctx.fillStyle=colores[index%colores.length];ctx.fill();inicio+=parte;}); document.getElementById('leyenda_prioridades').innerHTML=items.map((item,index)=>`<span><i style="background:${colores[index%colores.length]}"></i>${item.nombre}: ${item.total}</span>`).join(''); }
+function dibujarBarras(items) { const canvas=document.getElementById('grafico_software'),ctx=canvas.getContext('2d');canvas.width=600;canvas.height=280;const max=Math.max(...items.map(i=>Number(i.total)),1),ancho=Math.max(24,Math.min(55,520/Math.max(items.length,1)-8));items.forEach((item,index)=>{const alto=Number(item.total)/max*190,x=45+index*(ancho+14),y=220-alto;ctx.fillStyle='#315da6';ctx.fillRect(x,y,ancho,alto);ctx.fillStyle='#1e3a5f';ctx.font='bold 12px Segoe UI';ctx.textAlign='center';ctx.fillText(item.total,x+ancho/2,y-6);ctx.save();ctx.translate(x+ancho/2,238);ctx.rotate(-Math.PI/4);ctx.fillStyle='#475569';ctx.font='12px Segoe UI';ctx.textAlign='right';ctx.fillText(String(item.software).slice(0,18),0,0);ctx.restore();});ctx.strokeStyle='#cbd5e1';ctx.beginPath();ctx.moveTo(35,220);ctx.lineTo(590,220);ctx.stroke(); }
+async function cargarEstadisticas() { const respuesta=await fetch(API_ESTADISTICAS); if(!respuesta.ok) throw new Error('No se pudieron cargar las estadísticas'); const datos=await respuesta.json(); listaEstadistica('lista_salones',datos.salones||[],'salon'); listaEstadistica('lista_estados',datos.estados||[],'nombre'); dibujarTorta(datos.prioridades||[]); dibujarBarras(datos.software||[]); }
+cargarEstadisticas().catch(error=>console.error(error));

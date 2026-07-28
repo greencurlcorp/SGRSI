@@ -26,6 +26,7 @@
         <nav class="menu_desplegable" id="menu_desplegable">
             <a href="panelIncidencias.html" class="menu_item menu_item_activo">Panel de incidencias</a>
             <a href="panelSolicitudes.html" class="menu_item">Panel de solicitudes</a>
+            <a href="../../../index.html" class="menu_item" id="cerrar_sesion">Cerrar sesión</a>
         </nav>
     </header>
     <main>
@@ -54,6 +55,7 @@
     <script src="../js/auth.js"></script>
     <script>protegerRuta('tecnico');</script>
     <script src="../js/panelIncidencias.js"></script>
+    <script>document.getElementById('cerrar_sesion').addEventListener('click', () => sessionStorage.removeItem('srgsi_usuario'));</script>
 </body>
 
 </html>
